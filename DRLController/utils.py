@@ -1,5 +1,6 @@
 from matplotlib import animation
 import matplotlib.pyplot as plt
+import numpy as np
 
 #Funktion zum schreiben einer gif Datei
 def save_frames_as_gif(frames, path='./', filename='gym_animation.gif'):
