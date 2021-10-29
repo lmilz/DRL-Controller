@@ -88,7 +88,25 @@ class DQNController:
         plotRewards(self.rewardList, self.ave_rewards, 10)
 
     def control(self):
-        pass
+        state = self.env.reset()
+        state = np.reshape(state, [1, self.env.observation_space])
+        done = False
+                    
+        while not done:
+            QValue = self.model.predict(state)
+            action = np.argmax(QValue[0])
+            next_state, reward, done, info = self.env.step(action)
+                
+            #cart_pos.append(next_state[0])
+            #cart_velo.append(next_state[1])
+            #angle.append(next_state[2])
+            #angle_velo.append(next_state[3])
+                    
+            next_state = np.reshape(next_state, [1, self.env.observation_space])
+            state = next_stat
+
+    def loadweights(self, name):
+        self.model.load_weights(name)
 
     def close(self):
         self.env.close()    
